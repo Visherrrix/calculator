@@ -6,6 +6,16 @@ public class NumberConverter {
     }
 
     public String convertFromDecimal(double number, int toBase) {
-        return "0"; 
+        long integerPart = (long) number;
+        String result = switch (toBase) {
+            case 2 -> "0b" + Long.toBinaryString(integerPart);
+            case 8 -> "0" + Long.toOctalString(integerPart);
+            case 16 -> "0x" + Long.toHexString(integerPart);
+            default -> String.valueOf(number);
+        };
+        if (number % 1 != 0) {
+            result += String.format(".%02f", number - integerPart).substring(1);
+        }
+        return result;
     }
 }
