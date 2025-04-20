@@ -1,7 +1,14 @@
-package calculator;
 import java.util.Scanner;
+
 public class Calculator {
+
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Введите число:");
+    double num = scanner.nextDouble();
+    System.out.println("Введено: " + num);
+
     public void run() {
         System.out.println("Калькулятор работает");
     }
+
 }
