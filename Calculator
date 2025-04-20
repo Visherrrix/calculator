@@ -1,1 +1,7 @@
-
+package calculator;
+import java.util.Scanner;
+public class Calculator {
+    public void run() {
+        System.out.println("Калькулятор работает");
+    }
+}
