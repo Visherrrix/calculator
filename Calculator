@@ -8,7 +8,17 @@ public class Calculator {
     System.out.println("Введено: " + num);
 
     public void run() {
-        System.out.println("Калькулятор работает");
+        System.out.println("Введите число в 10-й системе счисления:");
+        double num1 = scanner.nextDouble();
+
+        System.out.println("Введите оператор (+, -, *, /):");
+        char operator = scanner.next().charAt(0);
+
+        System.out.println("Введите второе число:");
+        double num2 = scanner.nextDouble();
+
+        double result = calculate(num1, num2, operator);
+        System.out.println("Результат (10-я СС): " + result);
     }
     private double calculate(double a, double b, char op) {
         switch (op) {
