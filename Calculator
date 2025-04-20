@@ -7,27 +7,31 @@ public class Calculator {
     private final NumConverter converter = new NumConverter();
 
     public void run() {
-        System.out.println("Введите первое число:");
-        double num1 = scanner.nextDouble();
-
-        System.out.println("Введите оператор (+, -, *, /):");
-        char operator = scanner.next().charAt(0);
-
-        System.out.println("Введите второе число:");
-        double num2 = scanner.nextDouble();
-
-        double result = calculate(num1, num2, operator);
-        System.out.println("Результат (10-я СС): " + result);
+        while (true) {
+            System.out.println("\n1. Сменить СС\n2. Вычисления\n3. Выход");
+            String choice = scanner.nextLine();
+            if (choice.equals("3")) break;
+        }
     }
 
-    private double calculate(double a, double b, char op) {
-        switch (op) {
-            case '+': return a + b;
-            case '-': return a - b;
-            case '*': return a * b;
-            case '/': return a / b;
-            default: throw new IllegalArgumentException("Ошибка оператора");
-        }
+    private void performCalculation() {
+        System.out.print("Введите первое число: ");
+        double num1 = Double.parseDouble(scanner.nextLine());
+        
+        System.out.print("Введите оператор (+, -, *, /): ");
+        String operator = scanner.nextLine();
+        
+        System.out.print("Введите второе число: ");
+        double num2 = Double.parseDouble(scanner.nextLine());
+        
+        double result = switch (operator) {
+            case "+" -> num1 + num2;
+            case "-" -> num1 - num2;
+            case "*" -> num1 * num2;
+            case "/" -> num1 / num2;
+            default -> throw new IllegalArgumentException("Неверный оператор");
+        };
+        System.out.println("Результат: " + result);
     }
     
     private void changeNumberBase() {
