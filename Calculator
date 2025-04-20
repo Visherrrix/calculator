@@ -4,7 +4,7 @@ public class Calculator {
 
     Scanner scanner = new Scanner(System.in);
     private int currentBase = 10;
-    private final NumberConverter converter = new NumberConverter();
+    private final NumConverter converter = new NumConverter();
 
     public void run() {
         System.out.println("Введите первое число:");
@@ -19,6 +19,7 @@ public class Calculator {
         double result = calculate(num1, num2, operator);
         System.out.println("Результат (10-я СС): " + result);
     }
+
     private double calculate(double a, double b, char op) {
         switch (op) {
             case '+': return a + b;
@@ -28,7 +29,15 @@ public class Calculator {
             default: throw new IllegalArgumentException("Ошибка оператора");
         }
     }
-
+    
+    private void changeNumberBase() {
+        System.out.print("Выберите СС (2/8/10/16): ");
+        int base = Integer.parseInt(scanner.nextLine());
+        if (base == 2 || base == 8 || base == 10 || base == 16) {
+            currentBase = base;
+        }
+    }
+    
     private void safePerformCalculation() {
         try {
             performCalculation();
@@ -38,7 +47,5 @@ public class Calculator {
             System.out.println("Ошибка: " + e.getMessage());
         }
     }
-
-
 
 }
