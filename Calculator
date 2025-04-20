@@ -29,6 +29,16 @@ public class Calculator {
         }
     }
 
+    private void safePerformCalculation() {
+        try {
+            performCalculation();
+        } catch (NumberFormatException e) {
+            System.out.println("Ошибка: неверный формат числа");
+        } catch (ArithmeticException e) {
+            System.out.println("Ошибка: " + e.getMessage());
+        }
+    }
+
 
 
 }
