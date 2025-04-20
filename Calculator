@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class Calculator {
 
     Scanner scanner = new Scanner(System.in);
+    private int currentBase = 10;
+    private final NumberConverter converter = new NumberConverter();
 
     public void run() {
         System.out.println("Введите первое число:");
@@ -27,26 +29,6 @@ public class Calculator {
         }
     }
 
-    public String convertFromDecimal(double number, int toBase) {
-        if (toBase == 10) return String.valueOf(number);
-        
-        long integerPart = (long) number;
-        String result;
-        
-        switch (toBase) {
-            case 2:
-                result = "0b" + Long.toBinaryString(integerPart);
-                break;
-            case 8:
-                result = "0" + Long.toOctalString(integerPart);
-                break;
-            case 16:
-                result = "0x" + Long.toHexString(integerPart).toUpperCase();
-                break;
-            default:
-                throw new IllegalArgumentException("Неподдерживаемая система счисления");
-        }
-        return result;
-    }
+
 
 }
